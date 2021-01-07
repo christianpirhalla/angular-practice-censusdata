@@ -1,7 +1,11 @@
 <label for="states">Choose a state, please:</label>
 
-<select name="states" id="states">
-    <option *ngFor="let state of states" value='state.fips'>{{state.name}}</option>
+<select [(ngModel)]="stateSelected" (ngModelChange)='onStateSelected($event)' name="states" id="states" >
+    <option *ngFor="let state of states" [value]='state.fips'>{{state.name}}</option>
 </select>
 
-<!-- <app-state-detail [state] = 'selected'></app-state-detail> -->
+<div *ngIf="stateSelected">
+    <h3> {{ stateSelected.name }} </h3>
+</div> 
+
+<app-state-detail *ngIf="stateSelected" [stateSelected] = 'stateSelected'></app-state-detail>

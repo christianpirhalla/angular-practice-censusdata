@@ -8,12 +8,11 @@ import { StateService } from '../state.service';
 
 @Component({
   selector: 'app-state-detail',
-  template: `<h2>{{ state.name }} </h2>
-  <div><span>Population: {{ state.pop }}</span></div>`,
+  templateUrl: './state-detail.component.html',
   styleUrls: ['./state-detail.component.css']
 })
 export class StateDetailComponent implements OnInit {
-  @Input() state: State;
+  @Input() stateSelected: State;
   constructor() { }
 
   ngOnInit(): void {

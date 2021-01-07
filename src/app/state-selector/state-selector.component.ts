@@ -10,7 +10,7 @@ import { of } from 'rxjs';
 })
 export class StateSelectorComponent implements OnInit {
   states: State[] = [];
-  selected : State;
+  stateSelected : State;
   constructor(private stateService: StateService) { }
 
   ngOnInit(): void {
@@ -32,5 +32,19 @@ export class StateSelectorComponent implements OnInit {
     })
   });
 }
+
+  onStateSelected(id: number): void {
+    this.updateSelected(id);
+  }
+
+  updateSelected(id: number): void{
+    let s:State;
+    for (s of this.states){
+      if (s.fips == id) {
+        this.stateSelected = s;
+        return;
+      }
+    }
+  }
 
 }
