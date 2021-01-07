@@ -1,0 +1,7 @@
+<label for="states">Choose a state:</label>
+
+<select name="states" id="states">
+    <option *ngFor="let state of states" value='state.fips'>{{state.name}}</option>
+</select>
+
+<!-- <app-state-detail [state] = 'selected'></app-state-detail> -->
