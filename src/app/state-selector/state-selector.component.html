@@ -7,5 +7,7 @@
 <div *ngIf="stateSelected">
     <h3> {{ stateSelected.name }} </h3>
 </div> 
-
+<!-- you need to either make this an *ngIf or declare a default
+value inside of the component or else this won't work -->
+<app-state-stat-selector-list></app-state-stat-selector-list>
 <app-state-detail *ngIf="stateSelected" [stateSelected] = 'stateSelected'></app-state-detail>
