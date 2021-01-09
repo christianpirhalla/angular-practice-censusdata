@@ -1,2 +1,6 @@
 <h2>{{ stateSelected.name }} </h2>
-<div><span>Population: {{ stateSelected.pop }}</span></div>
+<div *ngIf="population"><span>Population: {{ stateSelected.pop }}</span></div>
+<div><span>Births: {{ stateSelected.births }}</span></div>
+<div><span>Deaths: {{ stateSelected.deaths }}</span></div>
+<div><span>Net Domestic Migration: {{ stateSelected.dom }}</span></div>
+<div><span>Net Internal Migration: {{ stateSelected.nim }}</span></div>

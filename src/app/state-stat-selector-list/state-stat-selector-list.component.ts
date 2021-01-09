@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { StatserviceService } from '../statservice.service';
 
 @Component({
   selector: 'app-state-stat-selector-list',
@@ -7,12 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StateStatSelectorListComponent implements OnInit {
 
-  stats: String[] = ["population", "birth rate"];
-
-  constructor() { }
+  constructor(private statService: StatserviceService) { }
 
   ngOnInit(): void {
-    console.log(this.stats);
+    
   }
+
+  getValues(val){
+    this.statService.setStatToggles(val);
+    }
 
 }

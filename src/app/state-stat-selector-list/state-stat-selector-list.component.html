@@ -1,3 +1,18 @@
-<ul>
-    <div *ngFor="let string of stats; let i = index"><app-state-stat-selector  [property]='string' [id]="i"></app-state-stat-selector></div>
-</ul>
+<form #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
+    <input type="checkbox" id="population" ngModel name="population">
+    <label for="population">Population</label>
+    <br>
+    <input type="checkbox" id="births" ngModel name="births">
+    <label for="births">Births</label>
+    <br>
+    <input type="checkbox" id="deaths" ngModel name="deaths">
+    <label for="deaths">Deaths</label>
+    <br>
+    <input type="checkbox" id="dom" ngModel name="dom">
+    <label for="dom">Net Domestic Migrations</label>
+    <br>
+    <input type="checkbox" id="nim" ngModel name="nim">
+    <label for="nim">Net Internal Migration</label>
+    <br>
+    <button>Update</button>
+</form>

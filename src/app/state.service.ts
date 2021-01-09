@@ -12,7 +12,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 })
 export class StateService {
 
-  private censusUrl = 'https://api.census.gov/data/2014/pep/natstprc?get=STNAME,POP&DATE_=7&for=state:*';
+  private censusUrl = 'https://api.census.gov/data/2014/pep/natstprc?get=STNAME,POP,BIRTHS,DEATHS,DOM,NIM&DATE_=7&for=state:*';
 
   constructor(private http: HttpClient) { }
 

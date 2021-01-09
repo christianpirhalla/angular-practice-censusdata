@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { StateService } from '../state.service';
+import { StatserviceService } from '../statservice.service';
 
 @Component({
   selector: 'app-state-detail',
@@ -13,10 +14,27 @@ import { StateService } from '../state.service';
 })
 export class StateDetailComponent implements OnInit {
   @Input() stateSelected: State;
-  constructor() { }
+
+  @Input() population: boolean;
+  births: boolean;
+  deaths: boolean;
+  dom: boolean;
+  nim: boolean;
+
+  constructor(private statService: StatserviceService) { }
 
   ngOnInit(): void {
+    this.getStatToggles();
+    console.log(this.population);
+  }
 
+  getStatToggles(){
+    let val = this.statService.getStatToggles();
+    this.population = val.population;
+    this.births = val.births;
+    this.deaths = val.deaths;
+    this.dom = val.dom;
+    this.nim = val.nim;
   }
 
 }

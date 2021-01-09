@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { State } from '../state';
 import { StateService } from '../state.service';
 import { of } from 'rxjs';
+import { StatserviceService } from '../statservice.service';
 
 @Component({
   selector: 'app-state-selector',
@@ -11,7 +12,13 @@ import { of } from 'rxjs';
 export class StateSelectorComponent implements OnInit {
   states: State[] = [];
   stateSelected : State;
-  constructor(private stateService: StateService) { }
+  population: boolean;
+  births: boolean;
+  deaths: boolean;
+  dom: boolean;
+  nim: boolean;
+
+  constructor(private stateService: StateService, private statService: StatserviceService) { }
 
   ngOnInit(): void {
     this.getStates();
@@ -25,8 +32,12 @@ export class StateSelectorComponent implements OnInit {
         console.log(stateElement);
         let newstate: State = {
           name:stateElement[0],
-          fips:parseInt(stateElement[3], 10),
-          pop:parseInt(stateElement[1], 10)
+          fips:parseInt(stateElement[7], 10),
+          pop:parseInt(stateElement[1], 10),
+          births:parseInt(stateElement[2], 10),
+          deaths:parseInt(stateElement[3], 10),
+          dom:parseInt(stateElement[4], 10),
+          nim:parseInt(stateElement[5], 10)
       };
       this.states.push(newstate);
     })
@@ -35,6 +46,21 @@ export class StateSelectorComponent implements OnInit {
 
   onStateSelected(id: number): void {
     this.updateSelected(id);
+  }
+
+  getValues(val){
+    this.statService.setStatToggles(val);
+    this.onStatChange();
+  }
+
+  onStatChange(): void {
+    console.log("called");
+    let val = this.statService.getStatToggles();
+    this.population = val.population;
+    this.births = val.births;
+    this.deaths = val.deaths;
+    this.dom = val.dom;
+    this.nim = val.nim;
   }
 
   updateSelected(id: number): void{
