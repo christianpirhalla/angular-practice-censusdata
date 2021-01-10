@@ -15,11 +15,11 @@ import { StatserviceService } from '../statservice.service';
 export class StateDetailComponent implements OnInit {
   @Input() stateSelected: State;
 
-  @Input() population: boolean;
-  births: boolean;
-  deaths: boolean;
-  dom: boolean;
-  nim: boolean;
+  @Input() population: boolean = true; 
+  @Input() births: boolean;
+  @Input() deaths: boolean;
+  @Input() dom: boolean;
+  @Input() nim: boolean;
 
   constructor(private statService: StatserviceService) { }
 

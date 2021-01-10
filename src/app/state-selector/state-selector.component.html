@@ -1,38 +1,48 @@
-<label for="states">Choose a state, please:</label>
 
-<select [(ngModel)]="stateSelected" (ngModelChange)='onStateSelected($event)' name="states" id="states" >
-    <option *ngFor="let state of states" [value]='state.fips'>{{state.name}}</option>
-</select>
 
-<div *ngIf="stateSelected">
-    <h3> {{ stateSelected.name }} </h3>
-</div> 
+<div class="form-group">
+    <label for="states">Choose a state, please:</label>
+    <select class="form-control" *ngIf="states" [(ngModel)]="stateSelected" (ngModelChange)='onStateSelected($event)' id="states" >
+        <option *ngFor="let state of states" [value]='state.fips'>{{state.name}}</option>
+    </select>
+</div>
+
 <!-- you need to either make this an *ngIf or declare a default
 value inside of the component or else this won't work -->
 <!-- let's try this <app-state-stat-selector-list></app-state-stat-selector-list> -->
 
+<div class="container bg-light border float-left">
+<h3>Available Data:</h3>
 <form #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
-    <input type="checkbox" id="population" ngModel name="population">
+    <input type="checkbox" id="population" [(ngModel)]='population' name="population" value="pop" checked >
     <label for="population">Population</label>
     <br>
-    <input type="checkbox" id="births" ngModel name="births">
+    <input type="checkbox" id="births" [(ngModel)]='births' name="births">
     <label for="births">Births</label>
     <br>
-    <input type="checkbox" id="deaths" ngModel name="deaths">
+    <input type="checkbox" id="deaths" [(ngModel)]='deaths' name="deaths">
     <label for="deaths">Deaths</label>
     <br>
-    <input type="checkbox" id="dom" ngModel name="dom">
+    <input type="checkbox" id="dom" [(ngModel)]='dom' name="dom">
     <label for="dom">Net Domestic Migrations</label>
     <br>
-    <input type="checkbox" id="nim" ngModel name="nim">
+    <input type="checkbox" id="nim" [(ngModel)]='nim' name="nim">
     <label for="nim">Net Internal Migration</label>
     <br>
     <button>Update</button>
 </form>
+</div>
 
 
+<!-- you need to either make this an *ngIf or declare a default
+value inside of the component or else this won't work -->
+<!-- let's try this <app-state-stat-selector-list></app-state-stat-selector-list> -->
+<br>
 <app-state-detail *ngIf="stateSelected"
  [stateSelected] = 'stateSelected'
  [population] = 'population' 
  [births] = 'births'
+ [deaths] = 'deaths'
+ [dom] = 'dom'
+ [nim] = 'nim'
  ></app-state-detail>

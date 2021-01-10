@@ -12,8 +12,8 @@ import { StatserviceService } from '../statservice.service';
 export class StateSelectorComponent implements OnInit {
   states: State[] = [];
   stateSelected : State;
-  population: boolean;
-  births: boolean;
+  population: boolean; //default
+  births: boolean; 
   deaths: boolean;
   dom: boolean;
   nim: boolean;
