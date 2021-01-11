@@ -1,8 +1,8 @@
 
 
-<div class="form-group">
-    <label for="states">Choose a state, please:</label>
-    <select class="form-control" *ngIf="states" [(ngModel)]="stateSelected" (ngModelChange)='onStateSelected($event)' id="states" >
+<div class="form-group col-sm-2">
+    <label for="states">Please Select a State:</label>
+    <select class="form-control" *ngIf="states" [(ngModel)]="stateSelected" (ngModelChange)='onStateSelected($event)' id="states">
         <option *ngFor="let state of states" [value]='state.fips'>{{state.name}}</option>
     </select>
 </div>
@@ -29,7 +29,6 @@ value inside of the component or else this won't work -->
     <input type="checkbox" id="nim" [(ngModel)]='nim' name="nim">
     <label for="nim">Net Internal Migration</label>
     <br>
-    <button>Update</button>
 </form>
 </div>
 
@@ -37,7 +36,7 @@ value inside of the component or else this won't work -->
 <!-- you need to either make this an *ngIf or declare a default
 value inside of the component or else this won't work -->
 <!-- let's try this <app-state-stat-selector-list></app-state-stat-selector-list> -->
-<br>
+<div class="container bg-light border float-left">
 <app-state-detail *ngIf="stateSelected"
  [stateSelected] = 'stateSelected'
  [population] = 'population' 
@@ -46,3 +45,4 @@ value inside of the component or else this won't work -->
  [dom] = 'dom'
  [nim] = 'nim'
  ></app-state-detail>
+</div>

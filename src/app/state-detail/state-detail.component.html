@@ -1,8 +1,6 @@
-<div class="container bg-light border position-static">
 <h2>{{ stateSelected.name }} </h2>
 <div *ngIf="population"><span>Population: {{ stateSelected.pop }}</span></div>
 <div *ngIf="births"><span>Births: {{ stateSelected.births }}</span></div>
 <div *ngIf="deaths"><span>Deaths: {{ stateSelected.deaths }}</span></div>
 <div *ngIf="dom"><span>Net Domestic Migration: {{ stateSelected.dom }}</span></div>
 <div *ngIf="nim"><span>Net Internal Migration: {{ stateSelected.nim }}</span></div>
-</div>
