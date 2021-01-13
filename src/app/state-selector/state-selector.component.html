@@ -11,7 +11,7 @@
 value inside of the component or else this won't work -->
 <!-- let's try this <app-state-stat-selector-list></app-state-stat-selector-list> -->
 
-<div class="container bg-light border float-left">
+<div class="container bg-light border animated float-left animated fadeInLeft">
 <h3>Available Data:</h3>
 <form #simpleForm="ngForm" (ngSubmit)="getValues(simpleForm.value)">
     <input type="checkbox" id="population" [(ngModel)]='population' name="population" value="pop" checked >
